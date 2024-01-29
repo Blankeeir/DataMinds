@@ -14,7 +14,8 @@ pip3 install scikit-learn
 python ML.py
 ```
 You will find a mlmodel.h5 created in your directory
-##Implement testing procedure
+
+#Implement testing procedure
 ```ruby
 def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
     dataset = hidden_data
@@ -28,7 +29,7 @@ def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
     return result
 ```
 
-###This cell should output a list of predictions.
+## This test should output a list of predictions.
 Make sure your dataset matches the format of catA_train.csv
 
 ```ruby
