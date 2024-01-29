@@ -8,6 +8,9 @@ from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+import joblib
+
+# Save the base model to an HDF5 file
 
 # Load the dataset
 filepath = 'data/catA_train.csv'
@@ -54,12 +57,12 @@ print("predicted domestic sales figures: ",result)
 print(f'Mean Squared Error: {mse}')
 print(f'R-squared Score: {r2}')
 
-
+joblib.dump(MLmodel, 'mlmodel.h5')
 
 
 def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
     dataset = hidden_data
-    # Modification of Dataset & EDA
+    '''# Modification of Dataset & EDA
     columns_to_drop = ["AccountID","Company","Industry","8-Digit SIC Code","8-Digit SIC Description","Entity Type","Parent Company","Parent Country","Ownership Type","Company Description","Sales (Global Ultimate Total USD)","Fiscal Year End","Global Ultimate Company","Global Ultimate Country","Domestic Ultimate Company"]
 
     dataset = dataset.drop(columns=[col for col in columns_to_drop if col in dataset.columns], errors='ignore')
@@ -69,7 +72,7 @@ def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
 
 
     # Extract features and target variable
-    X = dataset.drop(['Sales (Domestic Ultimate Total USD)'], axis=1)  # Features
+    X = dataset  # Features
     y = dataset['Sales (Domestic Ultimate Total USD)']  # Target variable
 
 
@@ -87,10 +90,13 @@ def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
 
     # Train the model
     MLmodel.fit(X_train, y_train)
-
     # Make predictions on the test set
     y_pred = MLmodel.predict(X_test)
-    result = list(y_pred)
+    result = list(y_pred)'''
+
+    
+    loaded_model = joblib.load('./mlmodel.h5')
+    result = list(loaded_model.predict(dataset))
     return result
 
 
