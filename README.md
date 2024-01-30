@@ -39,6 +39,6 @@ test_df = test_df.drop(columns=['Sales (Domestic Ultimate Total USD)'])
 print(testing_hidden_data(test_df))
 
 ```
-
+### Do note that upon receiving requirements to pull down the original dataset for confidential purposes, the /data directory no longer exists. If you need original dataset format to test our model, please contact us at e1300538@u.nus.edu
 
 
