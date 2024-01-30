@@ -9,6 +9,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 import joblib
 
+filepath = ''
+
 def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
     dataset = hidden_data
     columns_to_drop = ["AccountID","Company","Industry","8-Digit SIC Code","8-Digit SIC Description","Entity Type","Parent Company","Parent Country","Ownership Type","Company Description","Sales (Global Ultimate Total USD)","Fiscal Year End","Global Ultimate Company","Global Ultimate Country","Domestic Ultimate Company"]
@@ -25,7 +27,7 @@ def testing_hidden_data(hidden_data: pd.DataFrame) -> list:
 #Test_Hidden_Data#
 ##################
 
-# This cell should output a list of predictions.
-#test_df = pd.read_csv(filepath)
-#test_df = test_df.drop(columns=['Sales (Domestic Ultimate Total USD)'])
-#print(testing_hidden_data(test_df))
+#This cell should output a list of predictions.
+test_df = pd.read_csv(filepath)
+test_df = test_df.drop(columns=['Sales (Domestic Ultimate Total USD)'])
+print(testing_hidden_data(test_df))
